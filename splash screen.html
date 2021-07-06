@@ -1,0 +1,901 @@
+
+<style>
+    /* Optional - (you can remove it) */
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    
+    
+    
+    /* Load Settings */
+    .no-scroll-y {
+        overflow-y: hidden;
+    }
+    
+    #preloader-section{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+    }
+    
+    
+    /* Preloader */
+    .ctn-preloader {
+        -webkit-box-align: center;
+                align-items: center;
+      
+      /* Show or Hide cursor when hover of Preloader*/
+      cursor: none;
+        display: -webkit-box;
+        display: flex;
+      height: 100%;
+      -webkit-box-pack: center;
+              justify-content: center;
+        position: fixed;
+        left: 0;
+      top: 0;
+        width: 100%;
+      z-index: 9999;
+    }
+    
+    .ctn-preloader .animation-preloader {
+        position: absolute;
+      z-index: 100;
+    }
+    
+    /* Spinner loading */
+    .ctn-preloader .animation-preloader .spinner {
+      -webkit-animation: spinner 1s infinite linear;
+              animation: spinner 1s infinite linear;
+        border-radius: 50%;
+      border: 3px solid rgba(0, 0, 0, 0.2);
+      border-top-color: #124618; /* It is not identified in alphabetical order so that it does not overwrite it */
+      height: 9em;
+      margin: 0 auto 3.5em auto;
+      width: 9em;
+    }
+    
+    /* Text Loading */
+    .ctn-preloader .animation-preloader .txt-loading {
+      font: bold 5em 'Montserrat', sans-serif;
+        text-align: center;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:before {
+      -webkit-animation: letters-loading 4s infinite;
+              animation: letters-loading 4s infinite;
+      color: #124618;
+      content: attr(data-text-preloader);
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      -webkit-transform: rotateY(-90deg);
+              transform: rotateY(-90deg);
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading {
+        color: rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    
+    /* Letters Animation */
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(2):before {
+      -webkit-animation-delay: 0.2s;
+              animation-delay: 0.2s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(3):before {
+      -webkit-animation-delay: 0.4s;
+              animation-delay: 0.4s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(4):before {
+      -webkit-animation-delay: 0.6s;
+              animation-delay: 0.6s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(5):before {
+      -webkit-animation-delay: 0.8s;
+              animation-delay: 0.8s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(6):before {
+      -webkit-animation-delay: 1s;
+              animation-delay: 1s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(7):before {
+      -webkit-animation-delay: 1.2s;
+              animation-delay: 1.2s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(8):before {
+      -webkit-animation-delay: 1.4s;
+              animation-delay: 1.4s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(9):before {
+      -webkit-animation-delay: 1.6s;
+              animation-delay: 1.6s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(10):before {
+      -webkit-animation-delay: 1.8s;
+              animation-delay: 1.8s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(11):before {
+      -webkit-animation-delay: 2s;
+              animation-delay: 2s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(12):before {
+      -webkit-animation-delay: 2.2s;
+              animation-delay: 2.2s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(13):before {
+      -webkit-animation-delay: 2.4s;
+              animation-delay: 2.4s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(14):before {
+      -webkit-animation-delay: 2.6s;
+              animation-delay: 2.6s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(15):before {
+      -webkit-animation-delay: 2.8s;
+              animation-delay: 2.8s;
+    }
+    
+    .ctn-preloader .animation-preloader .txt-loading .letters-loading:nth-child(16):before {
+      -webkit-animation-delay: 3s;
+              animation-delay: 3s;
+    }
+    
+    /* Loader section Settings */
+    .ctn-preloader .loader-section {
+      background-color: #ffffff;
+      height: 100%;
+        position: fixed;
+      top: 0;
+      width: calc(50% + 1px);
+    }
+    
+    .ctn-preloader .loader-section.section-left {
+      left: 0;
+    }
+    
+    .ctn-preloader .loader-section.section-right {
+      right: 0;
+    }
+    
+    /* Fade effect in loading animation */
+    .loaded .animation-preloader {
+      opacity: 0;
+      -webkit-transition: 0.3s ease-out;
+      transition: 0.3s ease-out;
+    }
+    
+    /* Curtain effect */
+    .loaded .loader-section.section-left {
+      -webkit-transform: translateX(-101%);
+              transform: translateX(-101%);
+      -webkit-transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+      transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+    }
+    
+    .loaded .loader-section.section-right {
+      -webkit-transform: translateX(101%);
+              transform: translateX(101%);
+      -webkit-transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+      transition: 3.5s 0.1s all cubic-bezier(0.1, 0.1, 0.1, 2.000);
+    }
+    
+    /* Preloader Animation */
+    @-webkit-keyframes spinner {
+        to {
+            -webkit-transform: rotateZ(360deg);
+                    transform: rotateZ(360deg);
+        }
+    }
+    @keyframes spinner {
+        to {
+            -webkit-transform: rotateZ(360deg);
+                    transform: rotateZ(360deg);
+        }
+    }
+    
+    /* Animation of the letters loading from the preloader */
+    @-webkit-keyframes letters-loading {
+      0%,
+      75%,
+      100% {
+        opacity: 0;
+        -webkit-transform: rotateY(-90deg);
+                transform: rotateY(-90deg);
+      }
+    
+      25%,
+      50% {
+        opacity: 1;
+        -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+      }
+    }
+    @keyframes letters-loading {
+      0%,
+      75%,
+      100% {
+        opacity: 0;
+        -webkit-transform: rotateY(-90deg);
+                transform: rotateY(-90deg);
+      }
+    
+      25%,
+      50% {
+        opacity: 1;
+        -webkit-transform: rotateY(0deg);
+                transform: rotateY(0deg);
+      }
+    }
+    
+    /* Backward laptop size (laptop, tablet, cell phone) */
+    @media screen and (max-width: 767px) {
+        /* Preloader */
+        /* Spinner Loading */   
+        .ctn-preloader .animation-preloader .spinner {
+            height: 8em;
+            width: 8em;
+        }
+    
+        /* Text Loading */
+        .ctn-preloader .animation-preloader .txt-loading {
+          font: bold 3.5em 'Montserrat', sans-serif;
+        }
+    }
+    
+    @media screen and (max-width: 500px) {
+        /* Prelaoder */
+        /* Spinner Loading */
+        .ctn-preloader .animation-preloader .spinner {
+            height: 7em;
+            width: 7em;
+        }
+    
+        /* Text Loading */
+        .ctn-preloader .animation-preloader .txt-loading {
+          font: bold 2em 'Montserrat', sans-serif;
+        }
+    }
+    
+
+
+
+
+
+
+
+
+
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Trade+Winds&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+body{
+  background: #dfecff;
+  color: #7f8db0;
+}
+
+a{
+   color: #7f8db0;
+}
+
+.wrapper{
+  width: 100%;
+  height: 100%;
+}
+
+.navbar{
+  background: #fff;
+  width: 100%;
+  height: 60px;
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.navbar .navbar_left .logo a{
+   font-family: 'Trade Winds';
+   font-size: 20px;
+}
+
+.navbar .navbar_right{
+   display: flex;
+}
+
+.navbar .navbar_right img{
+  width: 35px;
+}
+
+.navbar .navbar_right .icon_wrap{
+  cursor: pointer;
+}
+
+.navbar .navbar_right .notifications{
+  margin-right: 25px;
+}
+
+.navbar .navbar_right .notifications .icon_wrap{
+  font-size: 28px;
+}
+
+.navbar .navbar_right .profile,
+.navbar .navbar_right .notifications{
+  position: relative;
+}
+
+.navbar .profile .profile_dd,
+.notification_dd{
+  position: absolute;
+  top: 48px;
+  right: -15px;
+  user-select: none;
+  background: #fff;
+  border: 1px solid #c7d8e2;
+  width: 350px;
+  height: auto;
+  display: none;
+  border-radius: 3px;
+  box-shadow: 10px 10px 35px rgba(0,0,0,0.125),
+              -10px -10px 35px rgba(0,0,0,0.125);
+}
+
+.navbar .profile .profile_dd:before,
+.notification_dd:before{
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    border: 10px solid;
+    border-color: transparent transparent #fff transparent;
+}
+
+.notification_dd li {
+    border-bottom: 1px solid #f1f2f4;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.notification_dd li .notify_icon{
+  display: flex;
+}
+
+.notification_dd li .notify_icon .icon{
+  display: inline-block;
+  background: url('https://i.imgur.com/MVJNkqW.png') no-repeat 0 0;
+	width: 40px;
+	height: 42px;
+}
+
+.notification_dd li.baskin_robbins .notify_icon .icon{
+  background-position: 0 -43px;
+}
+
+.notification_dd li.mcd .notify_icon .icon{
+  background-position: 0 -86px;
+}
+
+.notification_dd li.pizzahut .notify_icon .icon{
+  background-position: 0 -129px;
+}
+
+.notification_dd li.kfc .notify_icon .icon{
+  background-position: 0 -178px;
+}
+
+.notification_dd li .notify_data{
+  margin: 0 15px;
+  width: 185px;
+}
+
+.notification_dd li .notify_data .title{
+  color: #000;
+  font-weight: 600;
+}
+
+.notification_dd li .notify_data .sub_title{
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+}
+
+.notification_dd li .notify_status p{
+  font-size: 12px;
+}
+
+.notification_dd li.success .notify_status p{
+  color: #47da89;
+}
+
+.notification_dd li.failed .notify_status p{
+  color: #fb0001;
+}
+
+.notification_dd li.show_all{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.notification_dd li.show_all p{
+  font-weight: 700;
+  color: #3b80f9;
+  cursor: pointer;
+}
+
+.notification_dd li.show_all p:hover{
+  text-decoration: underline;
+}
+
+.navbar .navbar_right .profile .icon_wrap{
+  display: flex;
+  align-items: center;
+}
+
+.navbar .navbar_right .profile .name{
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.navbar .navbar_right .icon_wrap:hover,
+.navbar .navbar_right .profile.active .icon_wrap,
+.navbar .navbar_right .notifications.active .icon_wrap{
+  color: #3b80f9;
+}
+ 
+.navbar .profile .profile_dd{
+  width: 225px;
+}
+.navbar .profile .profile_dd:before{
+  rigth: 10px;
+}
+
+.navbar .profile .profile_dd ul li {
+    border-bottom: 1px solid #f1f2f4;
+}
+
+.navbar .profile .profile_dd ul li  a{
+    display: block;
+    padding: 15px 35px;
+    position: relative;
+}
+
+.navbar .profile .profile_dd ul li  a .picon{
+  display: inline-block;
+  width: 30px;
+}
+
+.navbar .profile .profile_dd ul li  a:hover{
+  color: #3b80f9;
+  background: #f0f5ff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.navbar .profile .profile_dd ul li.profile_li a:hover {
+    background: transparent;
+    cursor: default;
+    color: #7f8db0;
+}
+
+.navbar .profile .profile_dd ul li .btn{
+    height: 32px;
+    padding: 7px 10px;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    background: #3b80f9;
+    width: 125px;
+    margin: 5px auto 15px;
+}
+
+.navbar .profile .profile_dd ul li .btn:hover{
+  background: #6593e4;
+}
+
+.navbar .profile.active .profile_dd,
+.navbar .notifications.active .notification_dd{
+  display: block;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease;
+    display: none;
+}
+
+.popup .shadow {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.6;
+}
+
+.popup .inner_popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: auto;
+}
+
+.popup .notification_dd{
+  display: block;
+  position: static;
+  margin: 0 auto;
+  height: 357px;
+  overflow: auto;
+}
+
+.popup .notification_dd:before{
+   display: none;
+}
+
+.popup .notification_dd li.title{
+  font-weight: 700;
+  color: #3b80f9;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.popup .notification_dd li.title .close{
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup .notification_dd li.title .close:hover{
+  opacity: 0.5;
+}
+    </style>
+    
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <!-- Give your "body" the id of "page-top" to load page from start(top of the page) -->
+    <body id="page-top">
+    
+        <!-- Prevent Scroll -->
+        <div id="preloader-body" class="no-scroll-y">
+    
+            <!-- Start: Preloader -->
+            <section id="preloader-section">
+                <div id="preloader">
+                    <div id="ctn-preloader" class="ctn-preloader">
+                        <div class="animation-preloader">
+                            
+                            <!-- Spinner -->
+                            <div class="spinner"></div>
+                            
+                            <!-- Start: Text Loading -->
+                            <div class="txt-loading">
+                                <span data-text-preloader="2" class="letters-loading">2</span>
+                                <span data-text-preloader="0" class="letters-loading">0</span>
+                                <span data-text-preloader="4" class="letters-loading">4</span>
+                                <span data-text-preloader="8" class="letters-loading">8</span>
+                               <!--  <span data-text-preloader="I" class="letters-loading">I</span>
+                                <span data-text-preloader="V" class="letters-loading">V</span>
+                                <span data-text-preloader="E" class="letters-loading">E</span> -->
+                            </div>
+                            <!-- End: Text Loading -->
+    
+                        </div>
+    
+                        <!-- Start: Preloader sides - Model 1 -->
+                        <div class="loader-section section-left"></div>
+                        <div class="loader-section section-right"></div>
+                        <!-- End: Preloader sides - Model 1 -->
+    
+                    </div>
+                </div>
+            </section>
+            <!-- End: Preloader -->
+    
+
+            <div class="wrapper">
+                <div class="navbar">
+                  <div class="navbar_left">
+                    <div class="logo">
+                      <a href="#">Coding Market</a>
+                    </div>
+                  </div>
+              
+                  <div class="navbar_right">
+                    <div class="notifications">
+                      <div class="icon_wrap"><i class="far fa-bell"></i></div>
+                      
+                      <div class="notification_dd">
+                          <ul class="notification_ul">
+                              <li class="starbucks success">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                              </li>  
+                              <li class="baskin_robbins failed">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Failed</p>  
+                                  </div>
+                              </li> 
+                              <li class="mcd success">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                              </li>  
+                              <li class="pizzahut failed">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Failed</p>  
+                                  </div>
+                              </li> 
+                              <li class="kfc success">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                              </li> 
+                              <li class="show_all">
+                                  <p class="link">Show All Activities</p>
+                              </li> 
+                          </ul>
+                      </div>
+                      
+                    </div>
+                    <div class="profile">
+                      <div class="icon_wrap">
+                        <img src="https://i.imgur.com/x3omKbe.png" alt="profile_pic">
+                        <span class="name">John Alex</span>
+                        <i class="fas fa-chevron-down"></i>
+                      </div>
+              
+                      <div class="profile_dd">
+                        <ul class="profile_ul">
+                          <li class="profile_li"><a class="profile" href="#"><span class="picon"><i class="fas fa-user-alt"></i>
+                              </span>Profile</a>
+                            <div class="btn">My Account</div>
+                          </li>
+                          <li><a class="address" href="#"><span class="picon"><i class="fas fa-map-marker"></i></span>Address</a></li>
+                          <li><a class="settings" href="#"><span class="picon"><i class="fas fa-cog"></i></span>Settings</a></li>
+                          <li><a class="logout" href="#"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Logout</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="popup">
+                  <div class="shadow"></div>
+                  <div class="inner_popup">
+                      <div class="notification_dd">
+                          <ul class="notification_ul">
+                              <li class="title">
+                                  <p>All Notifications</p>
+                                  <p class="close"><i class="fas fa-times" aria-hidden="true"></i></p>
+                              </li> 
+                              <li class="starbucks success">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                              </li>  
+                              <li class="baskin_robbins failed">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Failed</p>  
+                                  </div>
+                              </li> 
+                              <li class="mcd success">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                              </li>  
+                              <li class="pizzahut failed">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Failed</p>  
+                                  </div>
+                              </li> 
+                              <li class="kfc success">
+                                  <div class="notify_icon">
+                                      <span class="icon"></span>  
+                                  </div>
+                                  <div class="notify_data">
+                                      <div class="title">
+                                          Lorem, ipsum dolor.  
+                                      </div>
+                                      <div class="sub_title">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div>
+                                  </div>
+                                  <div class="notify_status">
+                                      <p>Success</p>  
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                </div>
+                
+              </div>
+    </body>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+        
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+      setTimeout(function () {
+        $("#ctn-preloader").addClass("loaded");
+        // Once the preloader has finished, the scroll appears
+        $("#preloader-body").removeClass("no-scroll-y");
+    
+        if ($("#ctn-preloader").hasClass("loaded")) {
+          // It is so that once the preloader is gone, the entire preloader section will removed
+          $("#preloader")
+            .delay(1000)
+            .queue(function () {
+              $(this).remove();
+    
+              // Force Main page to show from the Start(Top) even if user scroll down on preloader
+    
+              // Model 1 - Smooth
+              document
+                .getElementById("page-top")
+                .scrollIntoView({ behavior: "smooth" });
+              // Model 2 - Fast
+              // document.getElementById("page-top").scrollIntoView();
+            });
+        }
+      }, 3000);
+    });
+    $(".profile .icon_wrap").click(function(){
+  $(this).parent().toggleClass("active");
+  $(".notifications").removeClass("active");
+});
+
+$(".notifications .icon_wrap").click(function(){
+  $(this).parent().toggleClass("active");
+   $(".profile").removeClass("active");
+});
+
+$(".show_all .link").click(function(){
+  $(".notifications").removeClass("active");
+  $(".popup").show();
+});
+
+$(".close, .shadow").click(function(){
+  $(".popup").hide();
+});
+    </script>
